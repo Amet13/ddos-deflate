@@ -67,7 +67,7 @@ add_to_cron()
 {
 	rm -f $CRON
 	sleep 1
-	service crond restart
+	service cron restart
 	sleep 1
 	echo "SHELL=/bin/sh" > $CRON
 	if [ $FREQ -le 2 ]; then
@@ -78,7 +78,7 @@ add_to_cron()
 		let "END_MINUTE = 60 - $FREQ + $START_MINUTE"
 		echo "$START_MINUTE-$END_MINUTE/$FREQ * * * * root /usr/local/ddos/ddos.sh >/dev/null 2>&1" >> $CRON
 	fi
-	service crond restart
+	service cron restart
 }
 
 
