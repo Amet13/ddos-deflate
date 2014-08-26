@@ -10,7 +10,7 @@
 load_conf()
 {
 	CONF="/usr/local/ddos/ddos.conf"
-	if [ -f "$CONF" ] && [ ! "$CONF" ==	"" ]; then
+	if [ -f "$CONF" ] && [ "$CONF" !=	"" ]; then
 		source $CONF
 	else
 		head
