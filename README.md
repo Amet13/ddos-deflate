@@ -5,8 +5,16 @@ Shell script blocking DDoS attacks
 
 Fixed configs for Debian 7 machines.
 
-Author: zaf@vsnl.com
 
-Site: http://deflate.medialayer.com/
+Installation
+------------
+Installation guide on my [blog].
 
-Installation: http://blog.amet13.name/2014/08/ddos-ddos-deflate.html
+
+Original author
+---------------
+[zaf@vsnl.com]
+
+
+[blog]:http://blog.amet13.name/2014/08/ddos-ddos-deflate.html
+[zaf@vsnl.com]:mailto:zaf@vsnl.com
