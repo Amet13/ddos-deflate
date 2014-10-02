@@ -1,7 +1,7 @@
 ddos-deflate
 ============
 
-Shell script blocking DDoS attacks
+Shell script blocking DDoS attacks.
 
 Fixed configs for Debian 7 machines.
 
