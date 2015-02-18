@@ -27,7 +27,8 @@ vim /usr/local/ddos/ignore.ip.list
 ```
 Add cronjob:
 ```bash
-/usr/local/ddos/ddos.sh -c
+crontab -e
+*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 Check:
 ```bash
@@ -36,11 +37,6 @@ Check:
     100 3.3.3.3
       1 servers)
       1 Address
-```
-```bash
-cat /etc/cron.d/ddos.cron
-SHELL=/bin/sh
-0-59/1 * * * * root /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 
 Uninstallation
@@ -51,6 +47,8 @@ cd /tmp
 wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh
 chmod +x uninstall.sh
 ./uninstall.sh
+crontab -e
+#*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 
 Original author

@@ -33,7 +33,6 @@ showhelp()
 	echo 'N : number of tcp/udp	connections (default 150)'
 	echo 'OPTIONS:'
 	echo '-h | --help: Show	this help screen'
-	echo '-c | --cron: Create cron job to run this script regularly (default 1 mins)'
 	echo '-k | --kill: Block the offending ip making more than N connections'
 }
 
@@ -63,34 +62,11 @@ unbanip()
 	. $UNBAN_SCRIPT &
 }
 
-add_to_cron()
-{
-	rm -f $CRON
-	sleep 1
-	service cron restart
-	sleep 1
-	echo "SHELL=/bin/sh" > $CRON
-	if [ $FREQ -le 2 ]; then
-		echo "0-59/$FREQ * * * * root /usr/local/ddos/ddos.sh >/dev/null 2>&1" >> $CRON
-	else
-		let "START_MINUTE = $RANDOM % ($FREQ - 1)"
-		let "START_MINUTE = $START_MINUTE + 1"
-		let "END_MINUTE = 60 - $FREQ + $START_MINUTE"
-		echo "$START_MINUTE-$END_MINUTE/$FREQ * * * * root /usr/local/ddos/ddos.sh >/dev/null 2>&1" >> $CRON
-	fi
-	service cron restart
-}
-
-
 load_conf
 while [ $1 ]; do
 	case $1 in
 		'-h' | '--help' | '?' )
 			showhelp
-			exit
-			;;
-		'--cron' | '-c' )
-			add_to_cron
 			exit
 			;;
 		'--kill' | '-k' )

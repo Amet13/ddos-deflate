@@ -10,10 +10,4 @@ if [ -d '/usr/local/ddos' ]; then
 	echo -n ".."
 fi
 echo "done"
-echo; echo -n "Deleting cron job....."
-if [ -e '/etc/cron.d/ddos.cron' ]; then
-	rm -f /etc/cron.d/ddos.cron
-	echo -n ".."
-fi
-echo "done"
 echo; echo "Uninstall Complete"; echo
