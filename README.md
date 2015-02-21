@@ -28,7 +28,7 @@ vim /usr/local/ddos/ignore.ip.list
 Add cronjob:
 ```bash
 crontab -e
-*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
+* * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 Check:
 ```bash
