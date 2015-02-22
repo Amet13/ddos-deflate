@@ -1,8 +1,8 @@
 ddos-deflate
 ============
-Shell script blocking DDoS attacks.
+Shell script blocking DDoS attacks. Fork of [DDoS Deflate](http://deflate.medialayer.com/).
 
-It's work for Debian 7.
+It's work for Debian 7 (please tell me if you've tested script on other distros).
 
 Installation
 ------------
@@ -39,18 +39,6 @@ Check:
       1 Address
 ```
 
-Uninstallation
--------------
-```bash
-su -
-cd /tmp
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh
-chmod +x uninstall.sh
-./uninstall.sh
-crontab -e
-#*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
-```
-
 Testing
 -------
 From another computer:
@@ -62,7 +50,19 @@ Check IPTables rules on server:
 iptables -L INPUT
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
-DROP       all  --  192.168.0.100  anywhere 
+DROP       all  --  192.168.0.100        anywhere 
+```
+
+Uninstallation
+-------------
+```bash
+su -
+cd /tmp
+wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh
+chmod +x uninstall.sh
+./uninstall.sh
+crontab -e
+#*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 
 Original author
