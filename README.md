@@ -51,6 +51,20 @@ crontab -e
 #*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 
+Testing
+-------
+From another computer:
+```bash
+user@192.168.0.100 ~ $ ab -n 200000 -c 100 http://server-ip/
+```
+Check IPTables rules on server:
+```bash
+iptables -L INPUT
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+DROP       all  --  192.168.0.100  anywhere 
+```
+
 Original author
 ---------------
 [zaf@vsnl.com](mailto:zaf@vsnl.com)
