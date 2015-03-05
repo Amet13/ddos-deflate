@@ -1,7 +1,8 @@
 #!/bin/bash
 ##############################################################################
 # DDoS-Deflate version 0.6 Author: Zaf <zaf@vsnl.com>                        #
-# It's fork of DDos-Deflate by Amet13 <admin@amet13.name>                    #
+# It's fork of DDoS-Deflate by Amet13 <admin@amet13.name>                    #
+# https://github.com/Amet13/ddos-deflate                                     #
 ##############################################################################
 # This program is distributed under the "Artistic License" Agreement         #
 #                                                                            #
@@ -24,7 +25,7 @@ head()
 {
 	echo "DDoS-Deflate version 0.6"
 	echo "Copyright (C) 2005, Zaf <zaf@vsnl.com>"
-	echo "It's fork of DDos-Deflate by Amet13 <admin@amet13.name> "
+	echo "It's fork of DDoS-Deflate by Amet13 <admin@amet13.name> "
 	echo
 }
 

@@ -1,6 +1,6 @@
 ddos-deflate
 ============
-Shell script blocking DDoS attacks. Fork of [DDoS Deflate](http://deflate.medialayer.com/).
+Shell script blocking DDoS attacks. Fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
 
 It works on Debian 7 (please tell me if you've tested script on other distros).
 
