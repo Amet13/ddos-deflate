@@ -2,7 +2,7 @@ ddos-deflate
 ============
 Shell script blocking DDoS attacks. Fork of [DDoS Deflate](http://deflate.medialayer.com/).
 
-It's work for Debian 7 (please tell me if you've tested script on other distros).
+It works on Debian 7 (please tell me if you've tested script on other distros).
 
 Installation
 ------------
@@ -13,12 +13,12 @@ wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/install.sh
 chmod +x install.sh
 ./install.sh
 ```
-Add your e-mail:
+Add your contact e-mail:
 ```bash
 vim /usr/local/ddos/ddos.conf
 EMAIL_TO="mail@example.com"
 ```
-Add your ignore ip's:
+Add your ignore ip's to ignorelist:
 ```bash
 vim /usr/local/ddos/ignore.ip.list
 127.0.0.1
@@ -28,24 +28,25 @@ vim /usr/local/ddos/ignore.ip.list
 Add cronjob:
 ```bash
 crontab -e
+# run script every minute
 * * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
 ```
 Check:
 ```bash
 /usr/local/ddos/ddos.sh
-    101 2.2.2.2
-    100 3.3.3.3
-      1 servers)
-      1 Address
+    724 127.0.0.1
+    214 2.2.2.2
+     59 3.3.3.3
+...
 ```
 
 Testing
 -------
-From another computer:
+Run ab from another computer:
 ```bash
 user@192.168.0.100 ~ $ ab -n 200000 -c 100 http://server-ip/
 ```
-Check IPTables rules on server:
+Check new IPTables rules on server:
 ```bash
 iptables -L INPUT
 Chain INPUT (policy ACCEPT)

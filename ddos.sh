@@ -1,11 +1,12 @@
 #!/bin/bash
 ##############################################################################
 # DDoS-Deflate version 0.6 Author: Zaf <zaf@vsnl.com>                        #
+# It's fork of DDos-Deflate by Amet13 <admin@amet13.name>                    #
 ##############################################################################
 # This program is distributed under the "Artistic License" Agreement         #
 #                                                                            #
 # The LICENSE file is located in the same directory as this program. Please  #
-#  read the LICENSE file before you make copies or distribute this program   #
+# read the LICENSE file before you make copies or distribute this program    #
 ##############################################################################
 load_conf()
 {
@@ -23,6 +24,7 @@ head()
 {
 	echo "DDoS-Deflate version 0.6"
 	echo "Copyright (C) 2005, Zaf <zaf@vsnl.com>"
+	echo "It's fork of DDos-Deflate by Amet13 <admin@amet13.name> "
 	echo
 }
 
