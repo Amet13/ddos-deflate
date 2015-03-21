@@ -7,24 +7,19 @@ else
 fi
 clear
 echo; echo 'Installing DOS-Deflate 0.6'; echo
-echo; echo -n 'Downloading source files...'
+echo; echo -n 'Downloading source files...' ; echo
 wget -q -O /usr/local/ddos/ddos.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.conf
-echo -n '.'
+echo -n '30% '
 wget -q -O /usr/local/ddos/LICENSE https://raw.githubusercontent.com/Amet13/ddos-deflate/master/LICENSE
-echo -n '.'
+echo -n '50% '
 wget -q -O /usr/local/ddos/ignore.ip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignore.ip.list 
-echo -n '.'
+echo -n '100%'
 wget -q -O /usr/local/ddos/ddos.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh 
 chmod 0755 /usr/local/ddos/ddos.sh
-cp -s /usr/local/ddos/ddos.sh /usr/local/sbin/ddos
 echo '... done'
-
-echo; echo -n 'Creating cron to run script every minute.....(Default setting)'
-/usr/local/ddos/ddos.sh --cron > /dev/null 2>&1
-echo '.. .done'
-echo; echo 'Installation has completed.'
+echo; echo 'Installation has completed'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 echo 'About new changes: admin@amet13.name'
-echo
+echo 'Do not forget create a cron job!'
 cat /usr/local/ddos/LICENSE | less
