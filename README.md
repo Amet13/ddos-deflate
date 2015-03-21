@@ -54,6 +54,18 @@ target     prot opt source               destination
 DROP       all  --  192.168.0.100        anywhere 
 ```
 
+Alternative usage
+-----------------
+If you want block only HTTP attackers, you can replace:
+```bash
+netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+```
+to
+```bash
+netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+```
+in vim ```/usr/local/ddos/ddos.sh```
+
 Uninstallation
 -------------
 ```bash
