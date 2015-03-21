@@ -2,7 +2,7 @@ ddos-deflate
 ============
 Shell script blocking DDoS attacks. Fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
 
-It works on Debian 7 (please tell me if you've tested script on other distros).
+It works on Debian 7 and CentOS 7 (please tell me if you've tested script on other distros).
 
 Installation
 ------------
@@ -64,10 +64,10 @@ to
 ```bash
 netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 ```
-in vim ```/usr/local/ddos/ddos.sh```
+in `/usr/local/ddos/ddos.sh`
 
 Uninstallation
--------------
+--------------
 ```bash
 su -
 cd /tmp
