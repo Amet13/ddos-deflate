@@ -66,6 +66,11 @@ netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | so
 ```
 in `/usr/local/ddos/ddos.sh`
 
+Updating
+--------
+cd /usr/local/ddos/
+wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh -O ddos.sh
+
 Uninstallation
 --------------
 ```bash
