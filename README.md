@@ -68,8 +68,10 @@ in `/usr/local/ddos/ddos.sh`
 
 Updating
 --------
+```bash
 cd /usr/local/ddos/
 wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh -O ddos.sh
+```
 
 Uninstallation
 --------------
