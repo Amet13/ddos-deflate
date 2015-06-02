@@ -33,7 +33,7 @@ showhelp()
 {
 	head
 	echo 'Usage: ddos.sh [OPTIONS] [N]'
-	echo 'N : number of tcp/udp	connections (default 150)'
+	echo 'N : number of tcp/udp connections (default 150)'
 	echo 'OPTIONS:'
 	echo '-h | --help: Show	this help screen'
 	echo '-k | --kill: Block the offending ip making more than N connections'
@@ -92,9 +92,9 @@ BANNED_IP_MAIL=`$TMP_FILE`
 BANNED_IP_LIST=`$TMP_FILE`
 echo "Banned the following ip addresses on `date`" > $BANNED_IP_MAIL
 echo "From `hostname -f` (`hostname --ip-address`)" >> $BANNED_IP_MAIL
-echo >>	$BANNED_IP_MAIL
+echo >> $BANNED_IP_MAIL
 BAD_IP_LIST=`$TMP_FILE`
-netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 cat $BAD_IP_LIST
 if [ $KILL -eq 1 ]; then
 	IP_BAN_NOW=0

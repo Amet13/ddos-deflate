@@ -56,13 +56,15 @@ DROP       all  --  192.168.0.100        anywhere
 
 Alternative usage
 -----------------
-If you want block only HTTP attackers, you can replace:
+By default script block only HTTP attackers (port 80).
+
+If you want block all ports (FTP, SSH, DNS, other), you can replace:
 ```bash
-netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 ```
 to
 ```bash
-netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 ```
 in `/usr/local/ddos/ddos.sh`
 
