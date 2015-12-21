@@ -2,16 +2,12 @@ ddos-deflate
 ============
 Shell script blocking DDoS attacks. Fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
 
-It works on Debian 7 and CentOS 7 (please tell me if you've tested script on other distros).
-
 Installation
 ------------
 ```bash
-su -
+sudo -i
 cd /tmp
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/install.sh
-chmod +x install.sh
-./install.sh
+wget -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/install.sh | bash
 ```
 Add your contact e-mail:
 ```bash

@@ -1,90 +1,40 @@
 #!/bin/bash
-##############################################################################
-# DDoS-Deflate version 0.6 Author: Zaf <zaf@vsnl.com>                        #
-# It's fork of DDoS-Deflate by Amet13 <admin@amet13.name>                    #
-# https://github.com/Amet13/ddos-deflate                                     #
-##############################################################################
-# This program is distributed under the "Artistic License" Agreement         #
-#                                                                            #
-# The LICENSE file is located in the same directory as this program. Please  #
-# read the LICENSE file before you make copies or distribute this program    #
-##############################################################################
+
+###################################################
+# DDoS-Deflate by Amet13 <admin@amet13.name>      #
+# It's fork of DDoS-Deflate by Zaf <zaf@vsnl.com> #
+# https://github.com/Amet13/ddos-deflate          #
+###################################################
+
+RED='\033[0;31m'
+GR='\033[0;32m'
+NC='\033[0m'
+
+#apf/kill убрал
+
 load_conf()
 {
-	CONF="/usr/local/ddos/ddos.conf"
-	if [ -f "$CONF" ] && [ "$CONF" !=	"" ]; then
+	CONF="/usr/local/ddos-deflate/ddos-deflate.conf"
+	if [ -f "$CONF" ]; then
 		source $CONF
 	else
-		head
-		echo "\$CONF not found."
+		printf "${RED}${CONF} not found.${NC}\n"
 		exit 1
 	fi
 }
 
-head()
+is_netstat()
 {
-	echo "DDoS-Deflate version 0.6"
-	echo "Copyright (C) 2005, Zaf <zaf@vsnl.com>"
-	echo "It's fork of DDoS-Deflate by Amet13 <admin@amet13.name> "
-	echo
-}
-
-showhelp()
-{
-	head
-	echo 'Usage: ddos.sh [OPTIONS] [N]'
-	echo 'N : number of tcp/udp connections (default 150)'
-	echo 'OPTIONS:'
-	echo '-h | --help: Show	this help screen'
-	echo '-k | --kill: Block the offending ip making more than N connections'
-}
-
-unbanip()
-{
-	UNBAN_SCRIPT=`mktemp /tmp/unban.XXXXXXXX`
-	TMP_FILE=`mktemp /tmp/unban.XXXXXXXX`
-	UNBAN_IP_LIST=`mktemp /tmp/unban.XXXXXXXX`
-	echo '#!/bin/sh' > $UNBAN_SCRIPT
-	echo "sleep $BAN_PERIOD" >> $UNBAN_SCRIPT
-	if [ $APF_BAN -eq 1 ]; then
-		while read line; do
-			echo "$APF -u $line" >> $UNBAN_SCRIPT
-			echo $line >> $UNBAN_IP_LIST
-		done < $BANNED_IP_LIST
+	NETSTAT=`which netstat`
+	RET=`echo $?`
+	if [ $RET -ne 0 ]; then
+		printf "${RED}Please install netstat from net-tools package.${NC}\n"
 	else
-		while read line; do
-			echo "$IPT -D INPUT -s $line -j DROP" >> $UNBAN_SCRIPT
-			echo $line >> $UNBAN_IP_LIST
-		done < $BANNED_IP_LIST
-	fi
-	echo "grep -v --file=$UNBAN_IP_LIST $IGNORE_IP_LIST > $TMP_FILE" >> $UNBAN_SCRIPT
-	echo "mv $TMP_FILE $IGNORE_IP_LIST" >> $UNBAN_SCRIPT
-	echo "rm -f $UNBAN_SCRIPT" >> $UNBAN_SCRIPT
-	echo "rm -f $UNBAN_IP_LIST" >> $UNBAN_SCRIPT
-	echo "rm -f $TMP_FILE" >> $UNBAN_SCRIPT
-	. $UNBAN_SCRIPT &
+		printf "${GR}Netstat already installed in your system.${NC}\n"
 }
 
 load_conf
-while [ $1 ]; do
-	case $1 in
-		'-h' | '--help' | '?' )
-			showhelp
-			exit
-			;;
-		'--kill' | '-k' )
-			KILL=1
-			;;
-		 *[0-9]* )
-			NO_OF_CONNECTIONS=$1
-			;;
-		* )
-			showhelp
-			exit
-			;;
-	esac
-	shift
-done
+is_netstat
 
 TMP_PREFIX='/tmp/ddos'
 TMP_FILE="mktemp $TMP_PREFIX.XXXXXXXX"
