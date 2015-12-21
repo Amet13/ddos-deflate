@@ -7,7 +7,7 @@ Installation
 ```bash
 sudo -i
 cd /tmp
-wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/install.sh | bash
+wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/install.sh | bash
 ```
 Setup config:
 ```bash
@@ -66,7 +66,7 @@ Updating
 --------
 ```bash
 cd /usr/local/ddos-deflate/
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/ddos-deflate.sh -O ddos-deflate.sh
+wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.sh -O ddos-deflate.sh
 ```
 
 Uninstallation
@@ -74,7 +74,7 @@ Uninstallation
 ```bash
 sudo -i
 cd /tmp
-wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/uninstall.sh | bash
+wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh | bash
 ```
 
 Original author

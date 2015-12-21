@@ -29,11 +29,11 @@ fi
 printf "${GR}Installing DDoS-Deflate.${NC}\n"
 printf "${GR}Downloading source files...${NC}\n"
 printf "${GR}10%%... "
-wget -q -O /usr/local/ddos-deflate/ddos-deflate.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/ddos-deflate.conf
+wget -q -O /usr/local/ddos-deflate/ddos-deflate.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.conf
 printf "30%%... "
-wget -q -O /usr/local/ddos-deflate/ignoreip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/ignoreip.list
+wget -q -O /usr/local/ddos-deflate/ignoreip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignoreip.list
 printf "75%%... "
-wget -q -O /usr/local/ddos-deflate/ddos-deflate.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/ddos-deflate.sh
+wget -q -O /usr/local/ddos-deflate/ddos-deflate.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.sh
 chmod 0755 /usr/local/ddos-deflate/ddos-deflate.sh
 printf "100%%\n"
 printf "Installation has been completed.\n"
