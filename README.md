@@ -7,26 +7,21 @@ Installation
 ```bash
 sudo -i
 cd /tmp
-wget -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/install.sh | bash
+wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/install.sh | bash
 ```
 Add your contact e-mail:
 ```bash
-vim /usr/local/ddos/ddos.conf
+vim /usr/local/ddos-deflate/ddos-deflate.conf
 EMAIL_TO="mail@example.com"
 ```
 Add your ignore ip's to ignorelist:
 ```bash
-vim /usr/local/ddos/ignore.ip.list
+vim /usr/local/ddos-deflate/ignoreip.list
 127.0.0.1
 1.1.1.1
 2.2.2.2
 ```
-Add cronjob:
-```bash
-crontab -e
-# run script every minute
-* * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
-```
+
 Check:
 ```bash
 /usr/local/ddos/ddos.sh
@@ -67,20 +62,17 @@ in `/usr/local/ddos/ddos.sh`
 Updating
 --------
 ```bash
-cd /usr/local/ddos/
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh -O ddos.sh
+cd /usr/local/ddos-deflate/
+wget https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/ddos-deflate.sh -O ddos-deflate.sh
 ```
 
 Uninstallation
 --------------
 ```bash
-su -
+sudo -i
 cd /tmp
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh
-chmod +x uninstall.sh
-./uninstall.sh
-crontab -e
-#*/1 * * * * /usr/local/ddos/ddos.sh >/dev/null 2>&1
+wget https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/uninstall.sh
+bash uninstall.sh
 ```
 
 Original author

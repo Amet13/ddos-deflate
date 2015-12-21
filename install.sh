@@ -11,6 +11,13 @@ if [ $RET -ne 0 ]; then
 	exit 1
 fi
 
+MAIL=`which mail &> /dev/null`
+RET=`echo $?`
+if [ $RET -ne 0 ]; then
+	printf "${RED}Please install mail from mailx package at first.${NC}\n"
+	exit 1
+fi
+
 if [ -d '/usr/local/ddos-deflate' ]; then
 	printf "${RED}Directory /usr/local/ddos-deflate exists.\n"
 	printf "Please uninstall the previous version at first.${NC}\n"
@@ -30,4 +37,6 @@ wget -q -O /usr/local/ddos-deflate/ddos-deflate.sh https://raw.githubusercontent
 chmod 0755 /usr/local/ddos-deflate/ddos-deflate.sh
 printf "100%%\n"
 printf "Installation has been completed.\n"
-printf "See DDoS-Deflate at /usr/local/ddos-deflate/${NC}\n"
+printf "SHELL=/bin/bash\n* * * * * root /usr/local/ddos-deflate/ddos-deflate.sh > /dev/null 2>&1\n" > /etc/cron.d/ddos-deflate
+printf "Cronjob /etc/cron.d/ddos-deflate has been added.\n"
+printf "See DDoS-Deflate at /usr/local/ddos-deflate/.${NC}\n"
