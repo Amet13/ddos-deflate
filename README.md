@@ -9,22 +9,25 @@ sudo -i
 cd /tmp
 wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/install.sh | bash
 ```
-Add your contact e-mail:
+Setup config:
 ```bash
 vim /usr/local/ddos-deflate/ddos-deflate.conf
+NO_OF_CONNECTIONS=500
 EMAIL_TO="mail@example.com"
+BAN_PERIOD=1000
 ```
 Add your ignore ip's to ignorelist:
 ```bash
 vim /usr/local/ddos-deflate/ignoreip.list
 127.0.0.1
+192.168.0.1
 1.1.1.1
 2.2.2.2
 ```
 
 Check:
 ```bash
-/usr/local/ddos/ddos.sh
+/usr/local/ddos-deflate/ddos-deflate.sh
     724 127.0.0.1
     214 2.2.2.2
      59 3.3.3.3
@@ -57,7 +60,7 @@ to
 ```bash
 netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 ```
-in `/usr/local/ddos/ddos.sh`
+in `/usr/local/ddos-deflate/ddos-deflate.sh`
 
 Updating
 --------
@@ -71,8 +74,7 @@ Uninstallation
 ```bash
 sudo -i
 cd /tmp
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/uninstall.sh
-bash uninstall.sh
+wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/uninstall.sh | bash
 ```
 
 Original author
