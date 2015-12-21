@@ -7,7 +7,7 @@ Installation
 ```bash
 sudo -i
 cd /tmp
-wget -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/install.sh | bash
+wget -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/devel/install.sh | bash
 ```
 Add your contact e-mail:
 ```bash
