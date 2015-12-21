@@ -51,7 +51,7 @@ Check new IPTables rules on server:
 iptables -L INPUT
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
-DROP       all  --  192.168.0.100        anywhere 
+DROP       all  --  192.168.0.100        anywhere
 ```
 
 Alternative usage
@@ -90,3 +90,7 @@ crontab -e
 Original author
 ---------------
 [zaf@vsnl.com](mailto:zaf@vsnl.com)
+
+License
+-------
+[Artistic License 2.0](http://directory.fsf.org/wiki/License:ArtisticLicense2.0)

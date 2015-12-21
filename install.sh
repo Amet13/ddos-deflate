@@ -1,25 +1,27 @@
 #!/bin/sh
-if [ -d '/usr/local/ddos' ]; then
-	echo; echo; echo "Please uninstall the previous version first"
+
+# colors
+RED='\033[0;31m'
+GR='\033[0;32m'
+NC='\033[0m'
+
+if [ -d '/usr/local/ddos-deflate' ]; then
+	printf "${RED}Directory /usr/local/ddos-deflate exists. Please uninstall the previous version first.${NC}\n"
 	exit 0
 else
-	mkdir /usr/local/ddos
+	mkdir /usr/local/ddos-deflate
 fi
+
 clear
-echo; echo 'Installing DOS-Deflate 0.6'; echo
-echo; echo -n 'Downloading source files...' ; echo
-wget -q -O /usr/local/ddos/ddos.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.conf
-echo -n '30% '
-wget -q -O /usr/local/ddos/LICENSE https://raw.githubusercontent.com/Amet13/ddos-deflate/master/LICENSE
-echo -n '50% '
-wget -q -O /usr/local/ddos/ignore.ip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignore.ip.list 
-echo -n '100%'
-wget -q -O /usr/local/ddos/ddos.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh 
+printf "${GR}Installing DDoS-Deflate...${NC}\n"
+printf "${GR}Downloading source files...${NC}\n"
+printf "${GR}10%%... "
+wget -q -O /usr/local/ddos-deflate/ddos.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.conf
+printf "30%%... "
+wget -q -O /usr/local/ddos-deflate/ignore.ip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignore.ip.list
+printf "75%%... "
+wget -q -O /usr/local/ddos-deflate/ddos.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos.sh
 chmod 0755 /usr/local/ddos/ddos.sh
-echo '... done'
-echo; echo 'Installation has completed'
-echo 'Config file is at /usr/local/ddos/ddos.conf'
-echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
-echo 'About new changes: admin@amet13.name'
-echo 'Do not forget create a cron job!'
-cat /usr/local/ddos/LICENSE | less
+printf "100%%\n"
+printf "Installation has been completed.\n"
+printf "See DDoS-Deflate at /usr/local/ddos-deflate/${NC}\n"
