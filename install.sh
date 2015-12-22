@@ -4,6 +4,12 @@ RED='\033[0;31m'
 GR='\033[0;32m'
 NC='\033[0m'
 
+ISROOT=`id -u`
+if [ $ISROOT -ne 0 ]; then
+	printf "${RED}Run install.sh by root.${NC}\n"
+	exit 1
+fi
+
 if [ ! -e /usr/bin/netstat ] || [ ! -e /bin/netstat ]; then
 	printf "${RED}Please install netstat from net-tools package at first.${NC}\n"
 	printf "For example:\n${GR}yum install net-tools${NC} or ${GR}apt-get install net-tools${NC}\n"
