@@ -9,16 +9,13 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
-load_conf()
-{
-	CONF="/usr/local/ddos-deflate/ddos-deflate.conf"
-	if [ -f "$CONF" ]; then
-		source $CONF
-	else
-		printf "${RED}${CONF} not found.${NC}\n"
-		exit 1
-	fi
-}
+CONF="/usr/local/ddos-deflate/ddos-deflate.conf"
+if [ -f "$CONF" ]; then
+	source $CONF
+else
+	printf "${RED}${CONF} not found.${NC}\n"
+	exit 1
+fi
 
 unbanip()
 {
@@ -39,19 +36,24 @@ unbanip()
 	. $UNBAN_SCRIPT &
 }
 
-load_conf
-
 TMP_PREFIX='/tmp/ddos-deflate'
 TMP_FILE="mktemp $TMP_PREFIX.XXXXXXXX"
 BANNED_IP_MAIL=`$TMP_FILE`
 BANNED_IP_LIST=`$TMP_FILE`
 
-echo "Banned the following ip addresses on `date`" > $BANNED_IP_MAIL
+echo "Banned the following IP addresses on `date`" > $BANNED_IP_MAIL
 echo "From `hostname -f` (`hostname -i`)" >> $BANNED_IP_MAIL
 echo >> $BANNED_IP_MAIL
 
 BAD_IP_LIST=`$TMP_FILE`
-netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+if [ $ONLY_HTTP == "YES" ]; then
+	netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+elif [ $ONLY_HTTP == "NO" ]; then
+	netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
+else
+	printf "${RED}Incorrect ONLY_HTTP value, set YES or NO.${NC}\n"
+	exit 1
+fi
 cat $BAD_IP_LIST
 
 IP_BAN_NOW=0

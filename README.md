@@ -1,6 +1,6 @@
 ddos-deflate
 ============
-Shell script blocking DDoS attacks. Fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
+Shell script blocking DDoS attacks. Simplified fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
 
 Installation
 ------------
@@ -15,8 +15,9 @@ vim /usr/local/ddos-deflate/ddos-deflate.conf
 NO_OF_CONNECTIONS=500
 EMAIL_TO="mail@example.com"
 BAN_PERIOD=1000
+ONLY_HTTP=NO
 ```
-Add your ignore ip's to ignorelist:
+Add your ignore IP's to ignore list:
 ```bash
 vim /usr/local/ddos-deflate/ignoreip.list
 127.0.0.1
@@ -46,27 +47,6 @@ iptables -L INPUT
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination         
 DROP       all  --  192.168.0.100        anywhere
-```
-
-Alternative usage
------------------
-By default script block only HTTP attackers (port 80).
-
-If you want block all ports (FTP, SSH, DNS, other), you can replace:
-```bash
-netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
-```
-to
-```bash
-netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
-```
-in `/usr/local/ddos-deflate/ddos-deflate.sh`
-
-Updating
---------
-```bash
-cd /usr/local/ddos-deflate/
-wget https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.sh -O ddos-deflate.sh
 ```
 
 Uninstallation
