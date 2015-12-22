@@ -4,17 +4,15 @@ RED='\033[0;31m'
 GR='\033[0;32m'
 NC='\033[0m'
 
-NETSTAT=`which netstat &> /dev/null`
-RET=`echo $?`
-if [ $RET -ne 0 ]; then
+if [ ! -e /usr/bin/netstat ] || [ ! -e /bin/netstat ]; then
 	printf "${RED}Please install netstat from net-tools package at first.${NC}\n"
+	printf "For example:\n${GR}yum install net-tools${NC} or ${GR}apt-get install net-tools${NC}\n"
 	exit 1
 fi
 
-MAIL=`which mail &> /dev/null`
-RET=`echo $?`
-if [ $RET -ne 0 ]; then
-	printf "${RED}Please install mail from mailx package at first.${NC}\n"
+if [ ! -e /usr/bin/mail ]; then
+	printf "${RED}Please install mail from mailx or mailutils package at first.${NC}\n"
+	printf "For example:\n${GR}yum install mailx${NC} or ${GR}apt-get install mailutils${NC}\n"
 	exit 1
 fi
 
@@ -39,4 +37,4 @@ printf "100%%\n"
 printf "Installation has been completed.\n"
 printf "SHELL=/bin/bash\n* * * * * root /usr/local/ddos-deflate/ddos-deflate.sh > /dev/null 2>&1\n" > /etc/cron.d/ddos-deflate
 printf "Cronjob /etc/cron.d/ddos-deflate has been added.\n"
-printf "See DDoS-Deflate at /usr/local/ddos-deflate/.${NC}\n"
+printf "Now setup DDoS-Deflate at /usr/local/ddos-deflate/ddos-deflate.conf${NC}\n"

@@ -7,7 +7,7 @@ printf "${RED}Uninstalling DDoS-Deflate.\n"
 printf "Removal script files...\n"
 sleep 1
 
-if [ -e '/usr/local/ddos-deflate' ]; then
+if [ -d '/usr/local/ddos-deflate' ]; then
 	rm -rf /usr/local/ddos-deflate
 fi
 
