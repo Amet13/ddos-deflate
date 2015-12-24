@@ -33,7 +33,7 @@ fi
 printf "${GR}Installing DDoS-Deflate.\n"
 printf "Downloading source files...${NC}\n"
 printf "${GR}10%%... "
-wget -q -O /usr/local/ddos-deflate/ddos-deflate.conf https://raw.githubusercontent.com/Amet13/ddos-deflate/master/config.sh
+wget -q -O /usr/local/ddos-deflate/config.sh https://raw.githubusercontent.com/Amet13/ddos-deflate/master/config.sh
 printf "30%%... "
 wget -q -O /usr/local/ddos-deflate/ignoreip.list https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignoreip.list
 printf "75%%... "
