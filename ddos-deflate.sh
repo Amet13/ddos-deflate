@@ -9,7 +9,7 @@
 RED='\033[0;31m'
 NC='\033[0m'
 
-CONF="/usr/local/ddos-deflate/ddos-deflate.conf"
+CONF="/usr/local/ddos-deflate/config.sh"
 if [ -f "$CONF" ]; then
 	source $CONF
 else
@@ -22,11 +22,11 @@ unbanip()
 	UNBAN_SCRIPT=`mktemp /tmp/unban.XXXXXXXX`
 	TMP_FILE=`mktemp /tmp/unban.XXXXXXXX`
 	UNBAN_IP_LIST=`mktemp /tmp/unban.XXXXXXXX`
-	echo '#!/bin/sh' > $UNBAN_SCRIPT
+	echo '#!/bin/bash' > $UNBAN_SCRIPT
 	echo "sleep $BAN_PERIOD" >> $UNBAN_SCRIPT
-	while read line; do
-		echo "$IPT -D INPUT -s $line -j DROP" >> $UNBAN_SCRIPT
-		echo $line >> $UNBAN_IP_LIST
+	while read LINE; do
+		echo "$IPT -D INPUT -s $LINE -j DROP" >> $UNBAN_SCRIPT
+		echo $LINE >> $UNBAN_IP_LIST
 	done < $BANNED_IP_LIST
 	echo "grep -v --file=$UNBAN_IP_LIST $IGNORE_IP_LIST > $TMP_FILE" >> $UNBAN_SCRIPT
 	echo "mv $TMP_FILE $IGNORE_IP_LIST" >> $UNBAN_SCRIPT
@@ -54,6 +54,7 @@ else
 	printf "${RED}Incorrect ONLY_HTTP value, set YES or NO.${NC}\n"
 	exit 1
 fi
+
 cat $BAD_IP_LIST
 
 IP_BAN_NOW=0

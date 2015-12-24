@@ -11,7 +11,7 @@ wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/instal
 ```
 Setup config:
 ```bash
-vim /usr/local/ddos-deflate/ddos-deflate.conf
+vim /usr/local/ddos-deflate/config.sh
 NO_OF_CONNECTIONS=500
 EMAIL_TO="mail@example.com"
 BAN_PERIOD=1000
