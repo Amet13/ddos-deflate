@@ -24,7 +24,9 @@ fi
 
 if [ -d '/usr/local/ddos-deflate' ]; then
 	printf "${RED}Directory /usr/local/ddos-deflate exists.\n"
-	printf "Please uninstall the previous version at first.${NC}\n"
+	printf "Please uninstall the previous version at first.\n"
+	printf "For uninstalling run:${NC}\n"
+	printf "${GR}wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh | bash${NC}\n"
 	exit 1
 else
 	mkdir /usr/local/ddos-deflate
