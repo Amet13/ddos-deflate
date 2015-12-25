@@ -15,8 +15,9 @@ vim /usr/local/ddos-deflate/config.sh
 NO_OF_CONNECTIONS=500
 EMAIL_TO="mail@example.com"
 BAN_PERIOD=1000
-ONLY_HTTP=NO
+CUSTOM_PORTS=":80|:443:|:53|:21"
 ```
+
 Add your ignore IP's to ignore list:
 ```bash
 vim /usr/local/ddos-deflate/ignoreip.list

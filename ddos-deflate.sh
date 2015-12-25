@@ -46,13 +46,10 @@ echo "From `hostname -f` (`hostname -i`)" >> $BANNED_IP_MAIL
 echo >> $BANNED_IP_MAIL
 
 BAD_IP_LIST=`$TMP_FILE`
-if [ $ONLY_HTTP == "YES" ]; then
-	netstat -ntu | grep ":80" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
-elif [ $ONLY_HTTP == "NO" ]; then
+if [ $CUSTOM_PORTS == "NO" ]; then
 	netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 else
-	printf "${RED}Incorrect ONLY_HTTP value, set YES or NO.${NC}\n"
-	exit 1
+	netstat -ntu | grep -E "$CUSTOM_PORTS" | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr > $BAD_IP_LIST
 fi
 
 cat $BAD_IP_LIST
