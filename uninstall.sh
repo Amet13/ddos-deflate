@@ -28,4 +28,10 @@ if [ -e '/etc/cron.d/ddos-deflate' ]; then
 	rm -f /etc/cron.d/ddos-deflate
 fi
 
+if [ -e '/var/log/ddos-deflate.log' ]; then
+	printf "Removal ddos-deflate.log...\n"
+	sleep 0.5
+	rm -f /var/log/ddos-deflate.log
+fi
+
 printf "Uninstall completed.${NC}\n"

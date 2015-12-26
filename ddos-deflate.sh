@@ -27,8 +27,6 @@ unbanip()
 	while read LINE; do
 		echo "$IPT -D INPUT -s $LINE -j DROP" >> $UNBAN_SCRIPT
 		echo $LINE >> $UNBAN_IP_LIST
-		UNBLOCK_DATE=`date "+%d.%m.%Y [%H:%M:%S]"`
-		echo "$UNBLOCK_DATE -- $LINE unblocked" >> $LOGFILE
 	done < $BANNED_IP_LIST
 	echo "grep -v --file=$UNBAN_IP_LIST $IGNORE_IP_LIST > $TMP_FILE" >> $UNBAN_SCRIPT
 	echo "mv $TMP_FILE $IGNORE_IP_LIST" >> $UNBAN_SCRIPT
@@ -73,8 +71,8 @@ while read line; do
 	echo $CURR_LINE_IP >> $IGNORE_IP_LIST
 	$IPT -I INPUT -s $CURR_LINE_IP -j DROP
 	if [ $ENABLE_LOG == "YES" ]; then
-		BLOCK_DATE=`date "+%d.%m.%Y [%H:%M:%S]"`
-		echo "$BLOCK_DATE -- $CURR_LINE_IP blocked" >> $LOGFILE
+		BLOCK_DATE=`date "+%d/%m/%Y [%H:%M:%S]"`
+		echo "$BLOCK_DATE -- $CURR_LINE_IP blocked on $BAN_PERIOD seconds" >> $LOGFILE
 	fi
 done < $BAD_IP_LIST
 
