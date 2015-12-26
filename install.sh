@@ -10,7 +10,9 @@ if [ $ISROOT -ne 0 ]; then
 	exit 1
 fi
 
-if [ ! -e /usr/bin/netstat ] || [ ! -e /bin/netstat ]; then
+if [ -e /usr/bin/netstat ] || [ -e /bin/netstat ]; then
+	:
+else
 	printf "${RED}Please install netstat from net-tools package at first.${NC}\n"
 	printf "For example:\n${GR}yum install net-tools${NC} or ${GR}apt-get install net-tools${NC}\n"
 	exit 1
