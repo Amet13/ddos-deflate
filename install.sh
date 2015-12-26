@@ -47,11 +47,10 @@ printf "30%%... "
 wget -q -O $IGNOREIP https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignoreip.list
 printf "75%%... "
 wget -q -O $SCRIPT https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.sh
-chmod 0755 $SCRIPT
 printf "100%%\n"
 printf "Installation has been completed.${NC}\n"
 
 CRONFILE="/etc/cron.d/ddos-deflate"
-printf "SHELL=/bin/bash\n* * * * * root $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
+printf "SHELL=/bin/bash\n* * * * * root bash $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
 printf "${GR}Cronjob $CRONFILE has been added.\n"
 printf "Now setup DDoS-Deflate at $CONFIG${NC}\n"

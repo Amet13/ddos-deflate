@@ -29,7 +29,7 @@ vim /usr/local/ddos-deflate/ignoreip.list
 
 Check:
 ```bash
-/usr/local/ddos-deflate/ddos-deflate.sh
+bash /usr/local/ddos-deflate/ddos-deflate.sh
     724 127.0.0.1
     214 2.2.2.2
      59 3.3.3.3
@@ -40,7 +40,7 @@ Testing
 -------
 Run ab from another computer:
 ```bash
-user@192.168.0.100 ~ $ ab -n 200000 -c 100 http://server-ip/
+user@192.168.0.100 ~ $ ab -n 2000 -c 10 http://server-ip/
 ```
 Check new IPTables rules on server:
 ```bash
