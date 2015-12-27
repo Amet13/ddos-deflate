@@ -3,7 +3,7 @@
 ###################################################
 # DDoS-Deflate by Amet13 <admin@amet13.name>      #
 # It's fork of DDoS-Deflate by Zaf <zaf@vsnl.com> #
-# https://github.com/Amet13/ddos-deflate          #
+# Repo: https://github.com/Amet13/ddos-deflate    #
 ###################################################
 
 RED='\033[0;31m'
@@ -14,7 +14,7 @@ CONF="/usr/local/ddos-deflate/config.sh"
 if [ -f "$CONF" ]; then
 	source $CONF
 else
-	printf "${RED}${CONF} not found. Exiting.${NC}\n"
+	printf "${RED}$CONF not found. Exiting.${NC}\n"
 	exit 1
 fi
 

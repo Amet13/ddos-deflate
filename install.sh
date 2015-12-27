@@ -6,7 +6,7 @@ NC='\033[0m'
 
 ISROOT=`id -u`
 if [ $ISROOT -ne 0 ]; then
-	printf "${RED}Run install.sh by root.${NC}\n"
+	printf "${RED}Run $0 by root.${NC}\n"
 	exit 1
 fi
 
@@ -24,22 +24,22 @@ if [ ! -e /usr/bin/mail ]; then
 	exit 1
 fi
 
-if [ -d '/usr/local/ddos-deflate' ]; then
-	printf "${RED}Directory /usr/local/ddos-deflate exists.\n"
+DIR="/usr/local/ddos-deflate"
+REPO="https://raw.githubusercontent.com/Amet13/ddos-deflate/master"
+if [ -d $DIR ]; then
+	printf "${RED}Directory $DIR exists.\n"
 	printf "Please uninstall the previous version at first.\n"
 	printf "For uninstalling run:${NC}\n"
-	printf "${GR}wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh | bash${NC}\n"
+	printf "${GR}wget -q -O - $REPO/uninstall.sh | bash${NC}\n"
 	exit 1
 else
-	mkdir /usr/local/ddos-deflate
+	mkdir $DIR
 fi
 
-DIR="/usr/local/ddos-deflate"
 CONFIG="$DIR/config.sh"
 IGNOREIP="$DIR/ignoreip.list"
 SCRIPT="$DIR/ddos-deflate.sh"
 CRONFILE="/etc/cron.d/ddos-deflate"
-REPO="https://raw.githubusercontent.com/Amet13/ddos-deflate/master"
 
 printf "${GR}Installing DDoS-Deflate.\n"
 printf "Downloading source files...${NC}\n"
