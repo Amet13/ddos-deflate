@@ -6,7 +6,7 @@ NC='\033[0m'
 
 ISROOT=`id -u`
 if [ $ISROOT -ne 0 ]; then
-	printf "${RED}Run $0 by root.${NC}\n"
+	printf "${RED}Run install.sh by root.${NC}\n"
 	exit 1
 fi
 
