@@ -38,19 +38,20 @@ DIR="/usr/local/ddos-deflate"
 CONFIG="$DIR/config.sh"
 IGNOREIP="$DIR/ignoreip.list"
 SCRIPT="$DIR/ddos-deflate.sh"
+CRONFILE="/etc/cron.d/ddos-deflate"
+REPO="https://raw.githubusercontent.com/Amet13/ddos-deflate/master"
 
 printf "${GR}Installing DDoS-Deflate.\n"
 printf "Downloading source files...${NC}\n"
 printf "${GR}10%%... "
-wget -q -O $CONFIG https://raw.githubusercontent.com/Amet13/ddos-deflate/master/config.sh
+wget -q -O $CONFIG $REPO/config.sh
 printf "30%%... "
-wget -q -O $IGNOREIP https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ignoreip.list
+wget -q -O $IGNOREIP $REPO/ignoreip.list
 printf "75%%... "
-wget -q -O $SCRIPT https://raw.githubusercontent.com/Amet13/ddos-deflate/master/ddos-deflate.sh
+wget -q -O $SCRIPT $REPO/ddos-deflate.sh
 printf "100%%\n"
 printf "Installation has been completed.${NC}\n"
 
-CRONFILE="/etc/cron.d/ddos-deflate"
-printf "SHELL=/bin/bash\n* * * * * root bash $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
+printf "SHELL=/bin/bash\n* * * * * root bash $SCRIPT ; sleep 20 ; bash $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
 printf "${GR}Cronjob $CRONFILE has been added.\n"
 printf "Now setup DDoS-Deflate at $CONFIG${NC}\n"

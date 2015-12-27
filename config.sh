@@ -9,6 +9,7 @@ LOGFILE="/var/log/ddos-deflate.log"
 NO_OF_CONNECTIONS=300
 
 ### An email is sent to the following address when an IP is banned.
+### If you want not send email use empty string: EMAIL_TO=""
 EMAIL_TO="root"
 
 ### Number of seconds the banned IP should remain in blacklist.

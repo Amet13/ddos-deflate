@@ -13,7 +13,7 @@ CONF="/usr/local/ddos-deflate/config.sh"
 if [ -f "$CONF" ]; then
 	source $CONF
 else
-	printf "${RED}${CONF} not found.${NC}\n"
+	printf "${RED}${CONF} not found. Exiting.${NC}\n"
 	exit 1
 fi
 
@@ -77,8 +77,8 @@ while read line; do
 done < $BAD_IP_LIST
 
 if [ $IP_BAN_NOW -eq 1 ]; then
-	DATE=`date`
 	if [ $EMAIL_TO != "" ]; then
+		DATE=`date`
 		cat $BANNED_IP_MAIL | mail -s "IP addresses banned on $DATE" $EMAIL_TO
 	fi
 	unbanip

@@ -9,29 +9,32 @@ if [ $ISROOT -ne 0 ]; then
 	exit 1
 fi
 
-if [ ! -d '/usr/local/ddos-deflate' ] && [ ! -e '/etc/cron.d/ddos-deflate' ]; then
+DIR="/usr/local/ddos-deflate"
+CRONFILE="/etc/cron.d/ddos-deflate"
+LOGFILE="/var/log/ddos-deflate.log"
+
+if [ ! -d '$DIR' ] && [ ! -e '$CRONFILE' ] && [ ! -e '$LOGFILE' ] ; then
 	printf "${RED}DDoS-Deflate already uninstalled.${NC}\n"
 	exit 0
 fi
 
 printf "${RED}Uninstalling DDoS-Deflate.\n"
-
-if [ -d '/usr/local/ddos-deflate' ]; then
+if [ -d '$DIR' ]; then
 	printf "Removal script files...\n"
 	sleep 0.5
-	rm -rf /usr/local/ddos-deflate
+	rm -rf $DIR
 fi
 
-if [ -e '/etc/cron.d/ddos-deflate' ]; then
+if [ -e '$CRONFILE' ]; then
 	printf "Removal cronjob...\n"
 	sleep 0.5
-	rm -f /etc/cron.d/ddos-deflate
+	rm -f $CRONFILE
 fi
 
-if [ -e '/var/log/ddos-deflate.log' ]; then
+if [ -e '$LOGFILE' ]; then
 	printf "Removal ddos-deflate.log...\n"
 	sleep 0.5
-	rm -f /var/log/ddos-deflate.log
+	rm -f $LOGFILE
 fi
 
 printf "Uninstall completed.${NC}\n"
