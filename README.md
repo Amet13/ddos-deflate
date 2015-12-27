@@ -64,7 +64,7 @@ Subject: IP addresses banned on 26/12/2015 [17:50:02]
 Banned the following IP addresses on 26/12/2015 [17:50:02]
 From: hostname.tld (192.168.0.13)
 
-192.168.0.90 with 4183 connections on 60 seconds
+192.168.0.100 with 4183 connections blocked on 60 seconds
 ```
 
 Uninstallation

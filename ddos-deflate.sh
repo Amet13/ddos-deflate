@@ -67,7 +67,7 @@ while read line; do
 		continue
 	fi
 	IP_BAN_NOW=1
-	echo "$CURR_LINE_IP with $CURR_LINE_CONN connections on $BAN_PERIOD seconds" >> $BANNED_IP_MAIL
+	echo "$CURR_LINE_IP with $CURR_LINE_CONN connections blocked on $BAN_PERIOD seconds" >> $BANNED_IP_MAIL
 	echo $CURR_LINE_IP >> $BANNED_IP_LIST
 	echo $CURR_LINE_IP >> $IGNORE_IP_LIST
 	$IPT -I INPUT -s $CURR_LINE_IP -j DROP
