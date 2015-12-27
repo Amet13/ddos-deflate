@@ -8,6 +8,7 @@
 
 RED='\033[0;31m'
 NC='\033[0m'
+DATE=`date "+%d/%m/%Y [%H:%M:%S]"`
 
 CONF="/usr/local/ddos-deflate/config.sh"
 if [ -f "$CONF" ]; then
@@ -41,8 +42,8 @@ TMP_FILE="mktemp $TMP_PREFIX.XXXXXXXX"
 BANNED_IP_MAIL=`$TMP_FILE`
 BANNED_IP_LIST=`$TMP_FILE`
 
-echo "Banned the following IP addresses on `date`" > $BANNED_IP_MAIL
-echo "From `hostname -f` (`hostname -i`)" >> $BANNED_IP_MAIL
+echo "Banned the following IP addresses on $DATE" > $BANNED_IP_MAIL
+echo "From: `hostname -f` (`hostname -i`)" >> $BANNED_IP_MAIL
 echo >> $BANNED_IP_MAIL
 
 BAD_IP_LIST=`$TMP_FILE`
@@ -66,19 +67,17 @@ while read line; do
 		continue
 	fi
 	IP_BAN_NOW=1
-	echo "$CURR_LINE_IP with $CURR_LINE_CONN connections" >> $BANNED_IP_MAIL
+	echo "$CURR_LINE_IP with $CURR_LINE_CONN connections on $BAN_PERIOD seconds" >> $BANNED_IP_MAIL
 	echo $CURR_LINE_IP >> $BANNED_IP_LIST
 	echo $CURR_LINE_IP >> $IGNORE_IP_LIST
 	$IPT -I INPUT -s $CURR_LINE_IP -j DROP
 	if [ $ENABLE_LOG == "YES" ]; then
-		BLOCK_DATE=`date "+%d/%m/%Y [%H:%M:%S]"`
-		echo "$BLOCK_DATE -- $CURR_LINE_IP blocked on $BAN_PERIOD seconds" >> $LOGFILE
+		echo "$DATE -- $CURR_LINE_IP blocked on $BAN_PERIOD seconds" >> $LOGFILE
 	fi
 done < $BAD_IP_LIST
 
 if [ $IP_BAN_NOW -eq 1 ]; then
 	if [ $EMAIL_TO != "" ]; then
-		DATE=`date`
 		cat $BANNED_IP_MAIL | mail -s "IP addresses banned on $DATE" $EMAIL_TO
 	fi
 	unbanip

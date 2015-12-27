@@ -52,6 +52,6 @@ wget -q -O $SCRIPT $REPO/ddos-deflate.sh
 printf "100%%\n"
 printf "Installation has been completed.${NC}\n"
 
-printf "SHELL=/bin/bash\n* * * * * root bash $SCRIPT ; sleep 20 ; bash $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
+printf "SHELL=/bin/bash\n* * * * * root bash $SCRIPT > /dev/null; sleep 20; bash $SCRIPT > /dev/null 2>&1\n" > $CRONFILE
 printf "${GR}Cronjob $CRONFILE has been added.\n"
 printf "Now setup DDoS-Deflate at $CONFIG${NC}\n"
