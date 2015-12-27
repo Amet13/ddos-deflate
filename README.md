@@ -57,6 +57,16 @@ tail -1 /var/log/ddos-deflate.log
 26/12/2015 [17:50:00] -- 192.168.0.100 blocked on 60 seconds
 ```
 
+Check your inbox:
+```
+Subject: IP addresses banned on 26/12/2015 [17:50:02]
+
+Banned the following IP addresses on 26/12/2015 [17:50:02]
+From: hostname.tld (192.168.0.13)
+
+192.168.0.90 with 4183 connections on 60 seconds
+```
+
 Uninstallation
 --------------
 ```bash
