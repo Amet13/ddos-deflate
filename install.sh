@@ -36,7 +36,7 @@ else
 	mkdir $DIR
 fi
 
-CONFIG="$DIR/config.sh"
+CONFIG="$DIR/ddos-deflate.conf"
 IGNOREIP="$DIR/ignoreip.list"
 SCRIPT="$DIR/ddos-deflate.sh"
 CRONFILE="/etc/cron.d/ddos-deflate"
@@ -44,7 +44,7 @@ CRONFILE="/etc/cron.d/ddos-deflate"
 printf "${GR}Installing DDoS-Deflate.\n"
 printf "Downloading source files...${NC}\n"
 printf "${GR}10%%... "
-wget -q -O $CONFIG $REPO/config.sh
+wget -q -O $CONFIG $REPO/ddos-deflate.conf
 printf "30%%... "
 wget -q -O $IGNOREIP $REPO/ignoreip.list
 printf "75%%... "

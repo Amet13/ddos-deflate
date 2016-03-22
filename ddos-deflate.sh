@@ -10,7 +10,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 DATE=`date "+%d/%m/%Y [%H:%M:%S]"`
 
-CONF="/usr/local/ddos-deflate/config.sh"
+CONF="/usr/local/ddos-deflate/ddos-deflate.conf"
 if [ -f "$CONF" ]; then
 	source $CONF
 else
