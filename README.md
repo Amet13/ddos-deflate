@@ -75,6 +75,10 @@ cd /tmp
 wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh | bash
 ```
 
+Why RAW table?
+--------------
+![](https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
+
 Original author
 ---------------
 [zaf@vsnl.com](mailto:zaf@vsnl.com)
