@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PROGDIR="/usr/local/ddos-deflate"
-IGNORE_IP_LIST="${PROGDIR}/ignoreip.list"
+IGNORE_IP_LIST="$PROGDIR/ignoreip.list"
 IPT="/sbin/iptables"
 LOGFILE="/var/log/ddos-deflate.log"
 

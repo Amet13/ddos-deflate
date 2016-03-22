@@ -26,7 +26,7 @@ unbanip()
 	echo '#!/bin/bash' > $UNBAN_SCRIPT
 	echo "sleep $BAN_PERIOD" >> $UNBAN_SCRIPT
 	while read LINE; do
-		echo "$IPT -D INPUT -s $LINE -j DROP" >> $UNBAN_SCRIPT
+		echo "$IPT -t raw -D PREROUTING -s $LINE -j DROP" >> $UNBAN_SCRIPT
 		echo $LINE >> $UNBAN_IP_LIST
 	done < $BANNED_IP_LIST
 	echo "grep -v --file=$UNBAN_IP_LIST $IGNORE_IP_LIST > $TMP_FILE" >> $UNBAN_SCRIPT
@@ -70,7 +70,7 @@ while read line; do
 	echo "$CURR_LINE_IP with $CURR_LINE_CONN connections blocked on $BAN_PERIOD seconds" >> $BANNED_IP_MAIL
 	echo $CURR_LINE_IP >> $BANNED_IP_LIST
 	echo $CURR_LINE_IP >> $IGNORE_IP_LIST
-	$IPT -I INPUT -s $CURR_LINE_IP -j DROP
+	$IPT -t raw -I PREROUTING -s $CURR_LINE_IP -j DROP
 	if [ $ENABLE_LOG == "YES" ]; then
 		echo "$DATE -- $CURR_LINE_IP blocked on $BAN_PERIOD seconds" >> $LOGFILE
 	fi
