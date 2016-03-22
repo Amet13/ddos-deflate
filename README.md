@@ -75,8 +75,8 @@ cd /tmp
 wget -q -O - https://raw.githubusercontent.com/Amet13/ddos-deflate/master/uninstall.sh | bash
 ```
 
-Why RAW table?
---------------
+Why RAW table instead FILTER?
+-----------------------------
 ![](https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
 
 Original author
