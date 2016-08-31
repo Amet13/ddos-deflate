@@ -62,7 +62,7 @@ while read line; do
 	if [ $CURR_LINE_CONN -lt $NO_OF_CONNECTIONS ]; then
 		break
 	fi
-	IGNORE_BAN=`grep -c $CURR_LINE_IP $IGNORE_IP_LIST`
+	IGNORE_BAN=`grep -cx $CURR_LINE_IP $IGNORE_IP_LIST`
 	if [ $IGNORE_BAN -ge 1 ]; then
 		continue
 	fi
