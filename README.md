@@ -2,6 +2,8 @@ ddos-deflate
 ============
 Shell script blocking DDoS attacks. Simplified fork of [(D)DoS Deflate](http://deflate.medialayer.com/).
 
+Not maintained since 2016.
+
 Installation
 ------------
 ```bash
@@ -47,7 +49,7 @@ Check new IPTables rules on server:
 ```bash
 iptables -t raw -L PREROUTING
 Chain PREROUTING (policy ACCEPT)
-target     prot opt source               destination         
+target     prot opt source               destination
 DROP       all  --  192.168.0.100        anywhere
 ```
 
